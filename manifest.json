@@ -1,0 +1,35 @@
+{
+  "name": "Chrome Extenson - Template",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "Reloads prime now and alerts you when there's a delivery window available",
+  "icons": { 
+    "16": "images/icon-16.png",
+    "48": "images/icon-48.png",
+    "128": "images/icon-128.png" 
+  },
+  "browser_action": {
+    "default_icon": "images/icon-128.png",
+    "default_popup": "views/popup.html"
+  },
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["js/content.js"]
+  }],
+  "permissions": [
+      "cookies",
+      "tabs",
+      "activeTab",
+      "declarativeContent",
+      "<all_urls>",
+      "storage",
+      "http://*/*",
+      "https://*/*",
+      "notifications"
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "background": {
+      "page": "views/background.html",
+      "persistent": false
+  }
+}
